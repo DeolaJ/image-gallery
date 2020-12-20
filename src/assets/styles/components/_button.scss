@@ -1,0 +1,15 @@
+// Buttons
+
+button {
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  padding: .7rem 2rem;
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+
+  .icon {
+    background: none;
+  }
+}
