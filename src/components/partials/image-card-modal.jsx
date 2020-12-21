@@ -15,6 +15,8 @@ const ImageCardModal = ({
     refPlaceholder.current.remove();
   };
 
+  const isMobile = () => document.body.clientWidth < 475;
+
   return (
     <ModalWrapper closeModal={closeModal}>
       <div className="image-modal">
@@ -24,7 +26,7 @@ const ImageCardModal = ({
             className="image-modal__loaded-image"
             onLoad={() => removePlaceholder()}
             onError={() => removePlaceholder()}
-            src={image.urls.regular}
+            src={!isMobile() ? image.urls.regular : image.urls.small}
             alt={image.alt}
           />
         </LazyLoad>

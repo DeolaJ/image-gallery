@@ -13,6 +13,8 @@ const ImageCard = ({
     refContentPlaceholder.current.remove();
   };
 
+  const isMobile = () => document.body.clientWidth < 475;
+
   return (
     <div className="image-card">
       <div className="image-card__placeholder" ref={refPlaceholder} />
@@ -23,15 +25,15 @@ const ImageCard = ({
       {
         image.id && (
           <>
-            <LazyLoad once offset={200}>
-              <img
-                className="image-card__loaded-image"
-                onLoad={() => removePlaceholder()}
-                onError={() => removePlaceholder()}
-                src={image.urls.small}
-                alt={image.alt}
-              />
-            </LazyLoad>
+            {/* <LazyLoad once offset={200}> */}
+            <img
+              className="image-card__loaded-image"
+              onLoad={() => removePlaceholder()}
+              onError={() => removePlaceholder()}
+              src={!isMobile() ? image.urls.small : image.urls.thumb}
+              alt={image.alt}
+            />
+            {/* </LazyLoad> */}
             <div
               className="image-card__overlay"
               aria-label="image-overlay"
