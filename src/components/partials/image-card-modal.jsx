@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable max-lines-per-function */
-import { useRef } from 'react';
+import { createRef } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 
@@ -9,7 +9,7 @@ import ModalWrapper from './modal-wrapper';
 const ImageCardModal = ({
   closeModal, image,
 }) => {
-  const refPlaceholder = useRef();
+  const refPlaceholder = createRef();
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
@@ -22,8 +22,8 @@ const ImageCardModal = ({
         <LazyLoad once>
           <img
             className="image-modal__loaded-image"
-            onLoad={removePlaceholder}
-            onError={removePlaceholder}
+            onLoad={() => removePlaceholder()}
+            onError={() => removePlaceholder()}
             src={image.urls.regular}
             alt={image.alt}
           />

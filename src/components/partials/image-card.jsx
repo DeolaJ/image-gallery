@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 
 const ImageCard = ({
   image, viewImageModal,
 }) => {
-  const refPlaceholder = useRef();
-  const refContentPlaceholder = useRef();
+  const refPlaceholder = createRef();
+  const refContentPlaceholder = createRef();
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
@@ -26,8 +26,8 @@ const ImageCard = ({
             <LazyLoad once offset={200}>
               <img
                 className="image-card__loaded-image"
-                onLoad={removePlaceholder}
-                onError={removePlaceholder}
+                onLoad={() => removePlaceholder()}
+                onError={() => removePlaceholder()}
                 src={image.urls.small}
                 alt={image.alt}
               />
