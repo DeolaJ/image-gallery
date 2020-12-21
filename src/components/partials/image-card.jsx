@@ -1,19 +1,18 @@
-import React, { createRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-// import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazyload';
+import Fade from 'react-reveal/Fade';
 
 const ImageCard = ({
   image, viewImageModal,
 }) => {
-  const refPlaceholder = createRef();
-  const refContentPlaceholder = createRef();
+  const refPlaceholder = useRef();
+  const refContentPlaceholder = useRef();
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
   };
-
-  const isMobile = () => document.body.clientWidth < 475;
 
   return (
     <div className="image-card">
@@ -25,15 +24,17 @@ const ImageCard = ({
       {
         image.id && (
           <>
-            {/* <LazyLoad once offset={200}> */}
-            <img
-              className="image-card__loaded-image"
-              onLoad={() => removePlaceholder()}
-              onError={() => removePlaceholder()}
-              src={!isMobile() ? image.urls.small : image.urls.thumb}
-              alt={image.alt}
-            />
-            {/* </LazyLoad> */}
+            <LazyLoad offset={200}>
+              <Fade duration={500}>
+                <img
+                  className="image-card__loaded-image"
+                  onLoad={removePlaceholder}
+                  onError={removePlaceholder}
+                  src={image.urls.small}
+                  alt={image.alt}
+                />
+              </Fade>
+            </LazyLoad>
             <div
               className="image-card__overlay"
               aria-label="image-overlay"
