@@ -12,7 +12,7 @@ const ImageCard = ({
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
-    imageRef.current.src = image.urls.small;
+    imageRef.current.style.backgroundImage = image.urls.small;
   };
 
   const imagesrc = () => image.urls.small;
