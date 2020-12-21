@@ -1,10 +1,11 @@
 @import 'abstracts/variables';
+@import 'abstracts/mixins';
 
+@import 'base/reset';
 @import 'base/typography';
 
 @import 'layout/header';
 @import 'layout/body';
-@import 'layout/pagination';
 
 @import 'components/modal';
 @import 'components/button';
@@ -12,3 +13,5 @@
 @import 'components/imagecard';
 @import 'components/imagegrid';
 @import 'components/imagemodal';
+@import 'components/notifications';
+@import 'components/infinite-scroll';

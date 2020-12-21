@@ -1,2 +1,45 @@
 // Image Grid
 
+.image-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+
+  &__no-image {
+    font-size: .875rem;
+    color: lighten($grey-dark, 4%);
+  }
+
+  .image-card {
+    grid-row-end: span 3;
+  }
+
+  @media (min-width: $breakpoint-mobile) {
+
+    gap: 1.5rem 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    .image-card:nth-child(2n + 1) {
+      grid-row-end: span 3;
+    }
+  
+    .image-card:nth-child(2n) {
+      grid-row-end: span 4;
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+
+    gap: 2rem 3rem;
+    grid-auto-rows: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    .image-card:nth-child(2n + 1) {
+      grid-row-end: span 3;
+    }
+
+    .image-card:nth-child(2n) {
+      grid-row-end: span 4;
+    }
+  }
+}

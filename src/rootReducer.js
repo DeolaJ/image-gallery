@@ -1,3 +1,6 @@
-import reducer from './reducers';
+import { combineReducers } from 'redux';
+import gallery from './reducers';
 
-export default reducer;
+export default combineReducers({
+  gallery,
+});

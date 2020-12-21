@@ -1,2 +1,12 @@
 // Body
 
+.body {
+  margin: -2.5rem auto 4rem;
+  max-width: 900px;
+  padding: 0 1.5rem;
+
+  @media (min-width: $breakpoint-mobile) {
+
+    padding: 0 2rem;
+  }
+}

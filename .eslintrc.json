@@ -1,12 +1,21 @@
 {
     "env": {
-        "es2020": true
+        "es2020": true,
+        "browser": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
         "airbnb"
     ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx"]
+            }
+        }
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true

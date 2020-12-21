@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Button = ({
-  text, iconLink, onClick, disabled, className,
+const Button = ({
+  type, text, iconLink, onClick, disabled, className,
 }) => {
   switch (type) {
     case 'text': return (
@@ -21,7 +21,6 @@ export const Button = ({
         type="button"
         aria-label={text}
         onClick={onClick}
-        iconLink={iconLink}
         disabled={disabled}
         className={`${className} icon`}
       >

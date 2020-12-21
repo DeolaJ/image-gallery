@@ -2,47 +2,67 @@
 
 .searchbar {
   position: relative;
+  max-width: 960px;
+  margin: 0 auto;
   
   &__input {
-    font-size: 1.35rem;
-    padding: 1rem;
-    padding-left: 5rem;
     border: none;
-    border-radius: .4rem;
+    border-radius: .25rem;
+    font-size: .75rem;
+    padding: 1.25rem;
+    color: $grey-dark;
+    padding-left: 3rem;
+    outline: none;
     width: 100%;
+    box-shadow: 0 0 20px 10px darken($grey-lighter, 2%);
+
+    &:focus {
+      box-shadow: 0 0 20px 10px rgba(37, 56, 88, .1);
+    }
+
+    @media (min-width: $breakpoint-mobile) {
+
+      font-size: .875rem;
+      padding-left: 4rem;
+    }
   }
   
   &__icon {
     position: absolute;
-    left: 2rem;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: gray;
     
     img {
-      width: 30px;
+      width: .875rem;
+      display: block;
+    }
+
+    @media (min-width: $breakpoint-mobile) {
+
+      left: 1.5rem;
     }
   }
 
-  @media (max-width: 460px) {
-    
-    &__input {
-      font-size: 1rem;
-      padding: .8rem;
-      padding-left: 3rem;
-    }
+  &__feedback {
+    font-size: 2.125rem;
+    color: $grey-dark;
 
-    &__icon {
-      left: 1rem;
+    span {
+      color: $grey;
     }
   }
-}
 
-.search-result {
-
-  &__title {
-    margin-bottom: 0;
-    font-size: 2.5rem;
-    text-align: center;
+  &__reset-button {
+    color: $white;
+    background-color: #becce4;
+    color: #253858;
+    margin-left: 2rem;
+    padding: .6rem 1rem;
+    border-radius: 44px;
+    font-size: .675rem;
+    float: right;
+    margin-top: 8px;
+    vertical-align: middle;
   }
 }

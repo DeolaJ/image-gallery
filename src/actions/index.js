@@ -1,7 +1,8 @@
-import { doFetchAPI } from './api';
-import { doSearchAPI } from './search';
+import { doFetchAPI } from './default';
+import { doResetSearch, doSearchAPI } from './search';
 
 export default {
   doFetchAPI,
+  doResetSearch,
   doSearchAPI,
 };

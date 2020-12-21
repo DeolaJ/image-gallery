@@ -23,7 +23,7 @@ function configureStore(initialState) {
 }
 
 // Create Redux store
-const store = configureStore(rootReducer);
+const store = configureStore({});
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,6 +31,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
+  // eslint-disable-next-line no-undef
   document.getElementById('root'),
 );
 

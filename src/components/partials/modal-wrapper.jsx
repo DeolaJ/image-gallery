@@ -17,6 +17,14 @@ const ModalWrapper = ({
 
   return (
     <Modal>
+      {/* For closing the Modal by clicking on the overlay */}
+      <Button
+        type="icon"
+        text="Close Modal"
+        className="modal__overlay-button"
+        iconLink=""
+        onClick={closeModal}
+      />
       <div
         className={open ? 'modal__wrapper open' : 'modal__wrapper'}
       >
