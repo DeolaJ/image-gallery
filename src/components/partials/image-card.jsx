@@ -13,6 +13,8 @@ const ImageCard = ({
     refContentPlaceholder.current.remove();
   };
 
+  const imagesrc = () => image.urls.small;
+
   return (
     <div className="image-card">
       <div className="image-card__placeholder" ref={refPlaceholder} />
@@ -28,7 +30,7 @@ const ImageCard = ({
                 className="image-card__loaded-image"
                 onLoad={removePlaceholder}
                 onError={removePlaceholder}
-                src={image.urls.small}
+                src={imagesrc()}
                 alt={image.alt}
               />
             </LazyLoad>
