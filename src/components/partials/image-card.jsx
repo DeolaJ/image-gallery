@@ -1,39 +1,21 @@
-import React, {
-  useRef, useEffect,
-} from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import Fade from 'react-reveal/Fade';
 
 const ImageCard = ({
-  image, viewImageModal, resizeImageCard,
+  image, viewImageModal,
 }) => {
   const refPlaceholder = useRef();
   const refContentPlaceholder = useRef();
-  const imageCardRef = useRef();
-
-  const resizeCurrentImageCard = () => {
-    if (image.id) {
-      resizeImageCard(imageCardRef.current);
-    }
-  };
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
-    resizeCurrentImageCard();
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', resizeCurrentImageCard);
-
-    return () => {
-      window.removeEventListener('resize', resizeCurrentImageCard);
-    };
-  }, []);
-
   return (
-    <div className="image-card" ref={imageCardRef}>
+    <div className="image-card">
       <div className="image-card__placeholder" ref={refPlaceholder} />
       <div className="image-card__placeholder-content" ref={refContentPlaceholder}>
         <div />
@@ -81,7 +63,6 @@ const ImageCard = ({
 ImageCard.propTypes = {
   image: PropTypes.objectOf(PropTypes.any).isRequired,
   viewImageModal: PropTypes.func.isRequired,
-  resizeImageCard: PropTypes.func.isRequired,
 };
 
 export default ImageCard;
