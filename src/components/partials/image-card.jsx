@@ -28,8 +28,8 @@ const ImageCard = ({
               <Fade duration={500}>
                 <img
                   className="image-card__loaded-image"
-                  onLoad={() => removePlaceholder}
-                  onError={() => removePlaceholder}
+                  onLoad={removePlaceholder}
+                  onError={removePlaceholder}
                   src={image.urls.small}
                   alt={image.alt}
                 />
