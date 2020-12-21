@@ -7,10 +7,12 @@ const ImageCard = ({
 }) => {
   const refPlaceholder = useRef();
   const refContentPlaceholder = useRef();
+  const imageRef = useRef();
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
+    imageRef.current.src = image.urls.small;
   };
 
   const imagesrc = () => image.urls.small;
@@ -27,6 +29,7 @@ const ImageCard = ({
           <>
             <LazyLoad offset={200}>
               <img
+                ref={imageRef}
                 className="image-card__loaded-image"
                 onLoad={removePlaceholder}
                 onError={removePlaceholder}
