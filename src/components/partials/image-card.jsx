@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
-import Fade from 'react-reveal/Fade';
 
 const ImageCard = ({
   image, viewImageModal,
@@ -25,15 +24,13 @@ const ImageCard = ({
         image.id && (
           <>
             <LazyLoad offset={200}>
-              <Fade duration={500}>
-                <img
-                  className="image-card__loaded-image"
-                  onLoad={removePlaceholder}
-                  onError={removePlaceholder}
-                  src={image.urls.small}
-                  alt={image.alt}
-                />
-              </Fade>
+              <img
+                className="image-card__loaded-image"
+                onLoad={removePlaceholder}
+                onError={removePlaceholder}
+                src={image.urls.small}
+                alt={image.alt}
+              />
             </LazyLoad>
             <div
               className="image-card__overlay"
