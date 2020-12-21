@@ -5,11 +5,12 @@ button {
   font-weight: 500;
   border: none;
   outline: none;
-  padding: .7rem 2rem;
-  font-size: 1rem;
+  padding: .7rem 1.5rem;
+  font-size: .875rem;
   letter-spacing: 0.02rem;
 
-  .icon {
+  &.icon {
     background: none;
+    padding: 0;
   }
 }
