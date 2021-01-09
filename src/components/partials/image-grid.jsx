@@ -53,6 +53,7 @@ const ImageGrid = () => {
             <ImageCard
               image={image}
               viewImageModal={viewImageModal}
+              isSearching={isSearching}
             />
             {
               index === (images.length - 1) && isSearching && (

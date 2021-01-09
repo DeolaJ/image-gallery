@@ -4,18 +4,30 @@ import LazyLoad from 'react-lazyload';
 import Fade from 'react-reveal/Fade';
 
 const ImageCard = ({
-  image, viewImageModal,
+  image, viewImageModal, isSearching,
 }) => {
   const refPlaceholder = useRef();
   const refContentPlaceholder = useRef();
+  const imageCardRef = useRef();
+
+  const revealFallback = () => {
+    const imageCardImage = imageCardRef.current.querySelector('.image-card__loaded-image');
+
+    // eslint-disable-next-line eqeqeq
+    if (imageCardImage.style.opacity == 0) {
+      imageCardImage.style.opacity = 1;
+    }
+  };
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
+    // Fallback for React-reveal
+    setTimeout(() => revealFallback(), 1000);
   };
 
   return (
-    <div className="image-card">
+    <div className="image-card" ref={imageCardRef}>
       <div className="image-card__placeholder" ref={refPlaceholder} />
       <div className="image-card__placeholder-content" ref={refContentPlaceholder}>
         <div />
@@ -24,17 +36,31 @@ const ImageCard = ({
       {
         image.id && (
           <>
-            <LazyLoad once offset={200}>
-              <Fade duration={500}>
-                <img
-                  className="image-card__loaded-image"
-                  onLoad={removePlaceholder}
-                  onError={removePlaceholder}
-                  src={image.urls.small}
-                  alt={image.alt}
-                />
-              </Fade>
-            </LazyLoad>
+            {
+              isSearching ? (
+                <LazyLoad once offset={200}>
+                  <Fade duration={500}>
+                    <img
+                      className="image-card__loaded-image"
+                      onLoad={removePlaceholder}
+                      onError={removePlaceholder}
+                      src={image.urls.small}
+                      alt={image.alt}
+                    />
+                  </Fade>
+                </LazyLoad>
+              ) : (
+                <Fade duration={500}>
+                  <img
+                    className="image-card__loaded-image"
+                    onLoad={removePlaceholder}
+                    onError={removePlaceholder}
+                    src={image.urls.small}
+                    alt={image.alt}
+                  />
+                </Fade>
+              )
+            }
             <div
               className="image-card__overlay"
               aria-label="image-overlay"
@@ -63,6 +89,7 @@ const ImageCard = ({
 ImageCard.propTypes = {
   image: PropTypes.objectOf(PropTypes.any).isRequired,
   viewImageModal: PropTypes.func.isRequired,
+  isSearching: PropTypes.bool.isRequired,
 };
 
 export default ImageCard;
