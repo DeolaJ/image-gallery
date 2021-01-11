@@ -8,14 +8,27 @@ const ImageCard = ({
 }) => {
   const refPlaceholder = useRef();
   const refContentPlaceholder = useRef();
+  const imageCardRef = useRef();
+
+  const revealFallback = () => {
+    const imageCardImage = imageCardRef.current.querySelector('.image-card__loaded-image');
+
+    // eslint-disable-next-line eqeqeq
+    if (imageCardImage.style.opacity == 0) {
+      imageCardImage.style.opacity = 1;
+    }
+  };
 
   const removePlaceholder = () => {
     refPlaceholder.current.remove();
     refContentPlaceholder.current.remove();
+
+    // Fallback for React-reveal
+    setTimeout(() => revealFallback(), 1000);
   };
 
   return (
-    <div className="image-card">
+    <div className="image-card" ref={imageCardRef}>
       <div className="image-card__placeholder" ref={refPlaceholder} />
       <div className="image-card__placeholder-content" ref={refContentPlaceholder}>
         <div />

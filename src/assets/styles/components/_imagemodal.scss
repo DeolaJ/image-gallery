@@ -3,27 +3,20 @@
 .image-modal {
   position: relative;
   width: 100%;
+  max-height: 90vh;
 
   &__placeholder {
-    height: 60vw;
+    height: 72vh;
     border-radius: .5rem .5rem 0 0;
     @include animation('loading-animation 1s infinite');
-
-    @media (min-width: $breakpoint-mobile) {
-
-      height: 50vw;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-
-      height: 35vw;
-    }
   }
 
   &__loaded-image {
     width: 100%;
     display: block;
     border-radius: .5rem .5rem 0 0;
+    max-height: 70vh;
+    object-fit: scale-down;
   }
 
   &__content {
